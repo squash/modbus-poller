@@ -118,6 +118,7 @@ func main() {
 
 func poll(c *config) {
 	c.lock.Lock()
+	defer c.lock.Unlock()
 	locker := flock.New(c.Port)
 	locked, err := locker.TryLock()
 	if !locked {
