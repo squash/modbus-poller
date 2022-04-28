@@ -184,7 +184,6 @@ func poll(c *config) {
 			log.Printf("Error sending to collector: %s", err.Error())
 		}
 	}
-	c.lock.Unlock()
 	handler.Close()
 }
 
