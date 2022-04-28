@@ -122,7 +122,11 @@ func poll(c *config) {
 	locker := flock.New(c.Port)
 	locked, err := locker.TryLock()
 	if err != nil || !locked {
-		log.Println(err.Error())
+		if err != nil {
+			log.Println(err.Error())
+		} else {
+			log.Println("Lock failed")
+		}
 		return
 	}
 	defer locker.Unlock()
