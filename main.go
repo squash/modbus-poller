@@ -192,8 +192,9 @@ func poll(c *config) {
 }
 
 func poller(c *config) {
+
 	for {
-		go poll(c)
+		poll(c)
 		time.Sleep(time.Duration(c.Interval) * time.Second)
 	}
 
